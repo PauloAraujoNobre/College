@@ -382,11 +382,13 @@ double metodoDeNewton(int grau, double vcoef[], double limiteSuperior){
 
     // Lendo teclado e atribuindo valores.
 
-    double aux = 0, aux_linha = 0, xi = 0.0, xiprox = 0.0;
+    double aux, aux_linha, xi = 0.0, xiprox = 0.0;
     xi = limiteSuperior;    
 
-    while(count < 1000 && abs(xi - xiprox) > 0.00000001){
-
+    while(count < 1000 && fabs(xi - xiprox) > 0.00000001){
+        aux = 0;
+        aux_linha = 0;
+        
         if(xiprox != 0.0){
             xi = xiprox;
         }
@@ -394,14 +396,12 @@ double metodoDeNewton(int grau, double vcoef[], double limiteSuperior){
             aux += vcoef[i] * pow(xi, i);
             aux_linha += i * vcoef[i] * pow(xi, (i - 1));
         }
+        
         xiprox = xi - (aux/aux_linha);
         count += 1;
-        printf("%lf\n", xiprox);
-        int re;
-        scanf("%d", &re);
     }
-
-    printf("Atraves de Newton, a aproximacao indicou: %lf\n", xiprox);
+    
+    printf("\nAtraves de Newton, a aproximacao indicou: %lf\n", xiprox);
 
     return 0.0;
 }
