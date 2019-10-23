@@ -1,0 +1,16 @@
+public class VendedorDeConcessionaria extends Funcionarios{
+	private double comissao;
+	private Carro carro;
+
+	public VendedorDeConcessionaria(String nome, String cpf, String dataNasc, String logradouro, String numero, String bairro, String cidade, String cidade, String UF, String cargo, double salario, double comissao, Carro carro){
+		super(nome,cpf, dataNasc, logradouro, numero, bairro,cidade, cidade, UF,cargo, salario);
+		this.comissao = comissao;
+		this.carro = carro;
+	}	
+
+	public vender(Carro carro){
+		this.comissao = 0.1 * carro.setValor();
+		System.out.println("O carro foi vendido");
+		System.out.println("Comissao atual: " + this.comissao);
+	}
+}

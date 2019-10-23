@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h>
+
+int vetorPrimos[100] = {1, 2};
+int countPrimos = 2;
+
+int addLista(int numero){
+	for (int i = (vetorPrimos[countPrimos - 1] + 1); i <= (int)(sqrt(numero) + 1); ++i){
+		if(verificaPrimo(i) == 1){
+			vetorPrimos[countPrimos] = i;
+			countPrimos++;
+		}
+	}
+}
+
+int verificaPrimo(int numero){
+	int count = 0, primo = 1;
+	for(int i = 1; vetorPrimos[i] <= (int)(sqrt(numero) + 1); i++){
+		if(numero%vetorPrimos[i] == 0){
+			primo = 0;
+		}
+	}
+	return primo;
+}
+
+int encontraPrimos(int numero){
+	int aux = 0;
+	for(int i = ; i < numero; i++){
+		
+	}
+}
+
+int main(){
+	int numero = 0, aux = 0, flag = 0;
+	do{
+		scanf("%d", &numero);
+		addLista(numero);
+		flag = verificaPrimo(numero)
+		if(flag != 0){
+			encontraPrimos[numero];
+		}
+		while(flag = 0);
+	}
+	return 0;
+}
