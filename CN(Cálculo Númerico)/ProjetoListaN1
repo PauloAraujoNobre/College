@@ -4,24 +4,22 @@
 
 void imprimeAviso();
 
-/* Métodos de manipulação de matrizes */
-
 double **alocaMatriz(int n) {
-    // Se houver memória disponível, aloca dinamicamente uma
-    // matriz de double com n linhas e n+1 colunas e devolve um
-    // ponteiro para essa matriz; caso contrário, devolve um
-    // ponteiro nulo.
+    /* Caso haja memória disponível, aloca dinamicamente
+    uma matriz de double com n linhas e n + 1 colunas e 
+    devolve um ponteiro para essa matriz; caso não haja
+    memória disponível, devolve um ponteiro nulo. */
     int i, j;
     double **M;
 
     M = malloc(sizeof(double*) * n);
 
-    if (M == NULL) // Falta de memória
+    if (M == NULL) // Sem memória disponível
         return NULL;
 
     for (i = 0; i < n; ++i) {
         M[i] = malloc(sizeof(double) * (n + 1));
-        if (M[i] == NULL) { // Falta de memória
+        if (M[i] == NULL) { // Sem memória disponível
             for (j = 0; j < i; ++j)
                 free(M[j]);
             free(M);
@@ -29,16 +27,17 @@ double **alocaMatriz(int n) {
         }
     }
     return M;
-} /* Fim alocaMatriz */
+} /* ================= Fim alocaMatriz ================= */
 
 void desalocaMatriz(double **M, int n) {
     // Libera a memória ocupada pela matriz
     // de double M de n linhas e n + 1 colunas.
     int i;
+
     for (i = 0; i < n; ++i)
         free(M[i]);
     free(M);
-} /* Fim desalocaMatriz */
+} /* ============== Fim desalocaMatriz ============== */
 
 void leMatriz(double **M, int n, FILE *f) {
     // Lê valores para uma matriz de double alocada
@@ -51,35 +50,36 @@ void leMatriz(double **M, int n, FILE *f) {
             fscanf(f, "%lf", &M[i][j]);
         }
     }
-} /* Fim leMatriz */
+} /* ================= Fim leMatriz ================= */
 
 int verificaCriterios(double **M, int n) {
-    // Lê valores para uma matriz de double alocada
-    // dinamicamente com n linhas e n+1 colunas.
+    /* Lê valores para uma matriz de double alocada
+        dinamicamente com n linhas e n + 1 colunas. */
     int i, j, flagLin = 0, flagCol = 0, tipo = 0;
     double somaLin = 0, somaCol = 0, diag = 0;
     
     for (i = 0; i < n; i++){
         for (j = 0; j < n; j++){
-            diag = abs(M[i][i]);
+            diag = fabs(M[i][i]);
 
             if (j != i){
-                somaLin += abs(M[i][j]);
-                somaCol += abs(M[j][i]);
+                somaLin += fabs(M[i][j]);
+                somaCol += fabs(M[j][i]);
             }
         }
 
-        if((somaLin / diag) > 1){
+        if((somaLin / diag) > 1)
             flagLin = 1;
-        }
-
-        if((somaCol / diag) > 1){
+        if((somaCol / diag) > 1)
             flagCol = 1;
-        }
         somaLin = 0;
         somaCol = 0;
     }
 
+    /* Verifica se os criterios das linhas ou
+    colunas é satisfeito (de acordo com a matriz
+    de coeficientes) utilizando de uma flag para
+    verificar essas condicoes */
     if(flagLin == 0 && flagCol == 0){
         printf("Os criterios foram satisfeitos\n\n");
         return tipo;
@@ -97,12 +97,11 @@ int verificaCriterios(double **M, int n) {
         }
         return tipo;
     }
-}
+} /* ================= Fim verificaCriterios ================= */
 
-void printaMatriz(double **M, int n) {
-    // Imprime o conteúdo de uma matriz de double alocada
-    // dinamicamente, com n linhas e n+1 colunas.
-
+void imprimeMatriz(double **M, int n) {
+    /* Imprime uma matriz de double alocada dinamicamente,
+    com n linhas e n + 1 colunas. */
     int i, j;
 
     for (i = 0; i < n; ++i) {
@@ -110,20 +109,19 @@ void printaMatriz(double **M, int n) {
             printf("%10.3lf ", M[i][j]);
         printf("\n");
     }
-}
+} /* ================= Fim imprimeMatriz ================= */
 
-/* Opção C */
+/* Sessão da Opção C (conversao de bases) do menu */
 
-char *converteDecParaBase(double decimal, int base) {
-    // Se houver memória disponível, retorna um
-    // ponteiro para uma string contendo o número
-    // decimal convertido para a base indicada
-    // no parâmetro; caso contrário, retorna um
-    // ponteiro nulo.
+char *conversao(double decimal, int base) {
+    /* Se houver memória disponível, retorna um
+    ponteiro para uma string contendo o número
+    decimal convertido para a base indicada
+    no parâmetro; caso contrário, retorna um
+    ponteiro nulo. */
 
     const int tamanhoResposta = 50;
     const int maxCasasDecimais = 20;
-
     int i, j, pos = 0;
     int parteInteira = decimal;
     double parteFracionaria = decimal - parteInteira;
@@ -132,8 +130,7 @@ char *converteDecParaBase(double decimal, int base) {
     if (!resposta)
         return NULL;
 
-    // conversão da parte inteira
-
+    // Conversão da parte inteira
     int negativo = (decimal < 0);
 
     if (negativo) {
@@ -153,7 +150,7 @@ char *converteDecParaBase(double decimal, int base) {
         resposta[j] = aux;
     }
 
-    // conversão da parte fracionária
+    // Conversão da parte racional
     if (parteFracionaria != 0) {
         resposta[pos++] = '.';
         int tamanho = 0;
@@ -173,12 +170,12 @@ char *converteDecParaBase(double decimal, int base) {
     return resposta;
 }
 
-void converte() {
-    // Exibe os números convertidos para as bases binária, octal e hexadecimal.
+void imprimeConversao() {
+    // Exibe os numeros ja convertidos para as bases binaria, octal e hexadecimal.
 
     double decimal;
     int i, bases[] = {2, 8, 16};
-    char *nomes[] = { "Binario", "Octal", "Hexadecimal" };
+    char *nomes[] = {"Binario", "Octal", "Hexadecimal"};
     char *resultado;
 
     printf("\nInsira o numero decimal a ser convertido");
@@ -188,7 +185,7 @@ void converte() {
     printf("\nDecimal: %lf\n", decimal);
 
     for (i = 0; i < 3; ++i) {
-        resultado = converteDecParaBase(decimal, bases[i]);
+        resultado = conversao(decimal, bases[i]);
         if (!resultado) {
             printf("Memoria insuficiente!\n");
             imprimeAviso();
@@ -219,10 +216,9 @@ double novoResultado(double **M, double x[1000], int j, int i, int n){
 }
 
 void aplicaGaussSeidel(double **M, int n) {
-    // Recebe M, a matriz aumentada de um SL com n variáveis
-    // e n equações e transforma em uma matriz aumentada de
-    // um SL diagonal equivalente.
-    // /home/paulo/Desktop/SL
+    /* Recebe M (a matriz aumentada de um SL com n variáveis
+    e n equações) e a transforma em uma matriz aumentada de
+    um SL diagonal equivalente */
 
     int i, j, k, l, flag = 1;
     double x[100000] = {0};
@@ -239,27 +235,23 @@ void aplicaGaussSeidel(double **M, int n) {
         for (k = i-n; k < n; k++){
             flag = 0;
             aux = x[k];
-            if ((aux - ((int)aux)) > 0.000000009){
+            if ((aux - ((int)aux)) > 0.000000009)
                 flag = 1;
-            }
         }
-        if (!flag){
+        if (!flag)
             iteracoes = 0;
-        }
     }
-
     j = i - n;
 
     printf("Atraves do metodo de Gauss-Seidel:\n");
-    for (l = 0; l < n; l++, j++){
-        printf("x%d = %lf\n", l+1, x[j]);
-    }
-    
+
+    for (l = 0; l < n; l++, j++)
+        printf("x%d = %lf\n", l + 1, x[j]);
 }
 
 void resolveSL() {
-    // Resolve o sistema linear descrito no arquivo 
-    // cujo nome for digitado.
+    /* Funcao que resolve o sistema linear contido
+       no arquivo a ser lido */
     FILE *f;
     char nome[100];
     double **M, *x;
@@ -290,20 +282,21 @@ void resolveSL() {
         return;
     }
 
+    /* Verifica o criterio das linhas ou colunas, caso
+    seja possivel, aplica o metodo de gauss-seidel*/
     leMatriz(M, n, f);
     criterio = verificaCriterios(M, n);
     fclose(f);
 
-    if (criterio != 2){
+    if (criterio != 2)
         aplicaGaussSeidel(M, n);
-    }
-
+    
     imprimeAviso();
     desalocaMatriz(M, n);
     free(x);
-}
+} /* =============== Fim resolve SistemaLinear =============== */
 
-/* Opção E */
+/* =============== Opção E (equacao algebrica) =============== */
 
 double aplicaLagrange(double *polinomio, int n, int positivas, int negativas) {
     // Aplica o teorema de Lagrange ao polinômio p e exibe
@@ -348,20 +341,22 @@ double aplicaLagrange(double *polinomio, int n, int positivas, int negativas) {
 
     return L[0]; 
 
-} /* Fim aplicaLagrange */
+} /* =============== Fim aplicaLagrange =============== */
 
 int *calculaVariacoesEPermanencias(double *p, int n) {
-    // Recebe p, o vetor de coeficientes de um
-    // polinômio, e n, o grau de p. Se houver
-    // memória disponível, retorna um ponteiro
-    // para um vetor com o número de variações
-    // e de permanências de sinal de p. Caso
-    // contrário, retorna um ponteiro nulo.
+    /* Recebe p, o vetor de coeficientes de um
+    polinômio, e n, o grau de p. Se houver
+    memória disponível, retorna um ponteiro
+    para um vetor com o número de variações
+    e de permanências de sinal de p. Caso
+    contrário, retorna um ponteiro nulo. */
     int variacoes = 0, permanencias = 0, i;
     int sinal = p[0] > 0 ? 1 : -1;
     int *resultado = malloc(sizeof(int) * 2);
+
     if (!resultado)
         return NULL;
+
     for (i = 1; i <= n; i++)
         if (p[i] != 0) {
             int atual = p[i] > 0 ? 1 : -1;
@@ -373,42 +368,46 @@ int *calculaVariacoesEPermanencias(double *p, int n) {
         }
     resultado[0] = variacoes;
     resultado[1] = permanencias;
+
     return resultado;
-} /* Fim calculaVariacoesEPermanencias */
+} /* ========== Fim calculaVariacoesEPermanencias ========== */
 
 double metodoDeNewton(int grau, double vcoef[], double limiteSuperior){
+    /* Recebe o grau do polinomio, juntamente com 
+    o vetor de polinomios(invertido) e o limite 
+    positivo superior para aplicar como x0 o limite
+    superior positivo as iteracoes de newton.    */
+
     int i, count = 0;   
     double *limites;
-
-    // Lendo teclado e atribuindo valores.
-
     double aux, aux_linha, xi = 0.0, xiprox = 0.0;
+
     xi = limiteSuperior;    
 
+    // Loop que garante as condicoes maximas das operacoes
     while(count < 1000 && fabs(xi - xiprox) > 0.00000001){
         aux = 0;
         aux_linha = 0;
         
-        if(xiprox != 0.0){
+        if(xiprox != 0.0)
             xi = xiprox;
-        }
         for (i = 0; i <= grau; i++){
-            aux += vcoef[i] * pow(xi, i);
-            aux_linha += i * vcoef[i] * pow(xi, (i - 1));
+            aux += vcoef[i] * pow(xi, i);                 // soma da f(x)
+            aux_linha += i * vcoef[i] * pow(xi, (i - 1)); // soma de f'(x)
         }
-        
         xiprox = xi - (aux/aux_linha);
         count += 1;
     }
-    
-    printf("\nAtraves de Newton, a aproximacao indicou: %lf\n", xiprox);
+    printf("\nPor meio do metodo de Newton, a aproximacao da raiz é: %lf\n", xiprox);
 
     return 0.0;
-}
+} /* =============== Fim metodoDeNewton =============== */
 
-void resolveEquacao() {
-    // Recebe um polinômio como entrada, aplica o teorema de Lagrange,
-    // e, se possível, aplica o método de Newton em um intervalo indicado pela entrada.
+void resolveEquacaoAlgebrica() {
+    /* Recebe um polinômio como entrada, aplica o teorema
+    de Lagrange e usa do método de Newton calculo da 
+    aproximacao de uma raiz, usando do limite superior
+    intervalo indicado positivo pelo metodo de Lagrange */
 
     int grauPolinomio, i, raizesImpares;
     double *polinomio, limiteEsq, limiteDir, aux;
@@ -430,9 +429,8 @@ void resolveEquacao() {
     }
     printf("\nDigite os coeficientes a partir de an ate a0: ");
 
-    for (i = grauPolinomio; i >= 0; i--){
+    for (i = grauPolinomio; i >= 0; i--)
         scanf("%lf", &polinomio[i]);
-    }
 
     if (polinomio[grauPolinomio] <= 0.0) {
         printf("\nan deve ser maior do que zero!\n");
@@ -443,7 +441,6 @@ void resolveEquacao() {
         printf("\na0 deve ser diferente de zero!\n");
         getchar();
         imprimeAviso();
-
 
         return;
     }
@@ -464,24 +461,22 @@ void resolveEquacao() {
 
     free(variacoesEPermanencias);
     free(polinomio);
-} /* Fim resolveEquacao */
-
-/* Métodos de interface */
+} /* =============== Fim resolveEquacaoAlgebrica =============== */
 
 void imprimeAviso() {
     printf("\nAperte ENTER para voltar para o menu\n");
-    getchar();
+    getchar(); // Limpa o buffer
 }
 
 int menu() {
-    /* O menu eh um switch que chama funcoes correspondentes 
+    /* O menu é um switch que chama funcoes correspondentes 
        as opcoes inseridas pelo usuario */
     char op = getchar();
 
     switch(op) {
         case 'C':
         case 'c':
-            converte();
+            imprimeConversao();
             break;
         case 'S':
         case 's':
@@ -489,7 +484,7 @@ int menu() {
             break;
         case 'E':
         case 'e':
-            resolveEquacao();
+            resolveEquacaoAlgebrica();
             break;
         case 'F':
         case 'f':
@@ -500,25 +495,25 @@ int menu() {
             imprimeAviso();
     }
     return 1;
-} //Menu
+} /* =============== Fim Menu =============== */
 
 void imprimeMenu() {
     //Exibe as opcoes do menu
 
-    printf("\n\nMenu\n\n");
-    printf("C - Conversao\n");
-    printf("S - Sistema Linear\n");
-    printf("E – Equacao Algebrica\n");
-    printf("F – Finalizar\n\n");
+    printf("\n\n========================== Menu =========================\n\n");
+    printf("\tC --> Conversao\n");
+    printf("\tS --> Sistema Linear\n");
+    printf("\tE –-> Equacao Algebrica\n");
+    printf("\tF –-> Finalizar\n\n");
     printf("Escolha uma das opcoes acima digitando a letra correspondente: ");
-} //Imprime menu
+    printf("\n\n=========================================================\n\n");
+} /* =============== Fim imprimeMenu =============== */
 
 int main() {
-    // Executa o programa em loop, aguardando uma
-    // nova entrada enquanto o usuário não encerra
-    // o aplicativo.
-    do {
+    /* Um loop que mantem o programa em execucao
+       ate o momento em que o usuario o encerra */
+    do
         imprimeMenu();
-    } while (menu());
+    while (menu());
     return 0;
 }
