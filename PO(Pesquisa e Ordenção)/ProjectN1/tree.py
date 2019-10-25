@@ -65,7 +65,7 @@ class Node(object):
             node_aux.fix_remove(matriz)
 
         elif self.left is not None and self.left.value == node.value:
-            node_aux = self.right
+            node_aux = self.left
             self.left = None
             node_aux.fix_remove(matriz)
 
