@@ -1,0 +1,1 @@
+L3 contém L2, porem L2 não contém L3, L3 apresenta todas os elementos presentes em L2, mas L2 não apresenta todos os elementos em L3.

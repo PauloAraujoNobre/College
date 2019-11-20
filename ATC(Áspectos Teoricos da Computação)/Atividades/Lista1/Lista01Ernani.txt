@@ -1,0 +1,15 @@
+a. Poltrona massageadouda 
+
+b.
+E = {q5, q6, q7, q8, q9, q10, q12, q13, a14, 2min, 5min, 10min}
+
+Σ = {2, 5, A, E}
+
+δ = {(q10, 2) -> q6; (q10, A) -> q14; (q10, 5) -> q5; (q6, 2) -> q7;(q6, E) -> 2min; (q7, 2) -> q8; (q8, 2) -> q13; (q13, 2) -> q9; (q9, E) -> 10min; (q14, E) -> 10min; (q5, 5) -> q12; (q5, E) -> 5min; (q12, E) -> 10min}
+ 
+ i = q10
+
+ F = {2min, 5min, 10min}
+
+c. 22222E = Success (10 minutos de descanso)
+   22E = Fail
