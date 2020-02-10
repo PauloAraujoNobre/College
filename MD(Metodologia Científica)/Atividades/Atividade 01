@@ -1,17 +1,24 @@
-Artigo 1: http://www.scielo.br/scielo.php?pid=S0100-55022017000200185&script=sci_arttext
-
-O uso de redes neurais artificiais para uso de diagnosticos previos resultantes de imagens, estatisticas ou padróes do paciente.
-
-O uso de IA em computadores que podem armazenar dados sobre imagens, como lesões dermatológicas, exames complementares ou dados corporais, 
-sejam elas coletadas diretamento de prontuários médicos eletrônicos ou exames clínicos, ocasionando váriações probabilisticas e gerando 
-diagnósticos baseados em algoritmos de decisão computacionais pre-estabelecidos.
-
-
-Artigo 2: http://www.karenreis.com.br/pdf/andre_kishimoto.pdf
-
-Uso da inteligência artificial em jogos eletrônicos para computadores e videogames.
-
-O uso de IA começou com padróes de movimentos repetitivou e aleatórios parar personagens controlados pelo computador. Sobretudo, jogos que 
-necessitam de uma boa IA para que sejam jogavéis requerem máquinas de estado ou scripts para criarem estratégias ou táticas, sob 
-consequência da necessidade, a IA para jogos tornou-se extremamente promissora, superando padróes humanos principalmente em jogos de 
+Artigo 01: Inteligência Artificial e Medicina 
+ 
+Objetivo: Demonstrar sistemas de redes neurais artificiais para diagnósticos médico prévio de imagens, estatísticas e padrões de pacientes.
+  
+Metodologia: Desenvolver uma rede neural artificial capaz de analisar uma grande quantidade de dados e através disso, encontrar padrões para diagnósticos médicos.
+ 
+Resumo: O uso de IA em computadores que podem armazenar dados sobre imagens, como lesões dermatológicas, exames complementares ou dados corporais, sejam elas coletadas diretamente de prontuários médicos eletrônicos ou exames clínicos, ocasionando variações probabilísticas e gerando diagnósticos baseados em algoritmos de decisão computacionais pré-estabelecidos.
+ 
+ 
+ 
+Artigo 02: Inteligência Artificial em Jogos Eletrônicos
+ 
+Objetivo: Pesquisa sobre o uso da inteligência artificial em jogos eletrônicos para computadores e videogames.
+ 
+Metodologia: O uso de algoritmos aleatórios até o uso de métodos computacionais de raciocínio lógico para promover inteligência artificial para NPCs(Non-player characters)
+ 
+Resumo: O uso de IA começou com padrões de movimentos repetitivos e aleatórios para personagens controlados pelo computador. Sobretudo, jogos que necessitam de uma boa IA para que sejam jogáveis requerem máquinas de estado ou scripts para criarem estratégias ou táticas, sob consequência da necessidade, a IA para jogos tornou-se extremamente promissora, superando padrões humanos principalmente em jogos de 
 estratégias como civilization ou xadrez.
+ 
+REFERÊNCIAS:
+ 
+http://www.scielo.br/scielo.php?pid=S0100-55022017000200185&script=sci_arttext
+ 
+http://www.karenreis.com.br/pdf/andre_kishimoto.pdf
