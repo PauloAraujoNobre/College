@@ -1,0 +1,39 @@
+1) SELECT COUNT(*) FROM `filme_categoria` GROUP BY categoria_id
+
+2)
+SELECT 
+	ator.primeiro_nome, ator.ultimo_nome, COUNT(filme_ator.filme_id) as quantidade 
+FROM 
+	filme_ator INNER JOIN ator ON ator.ator_id = filme_ator.ator_id 
+WHERE 
+	ator.primeiro_nome LIKE 'ED' and
+	ator.ultimo_nome LIKE 'CHASE'
+
+4) 
+SELECT 
+	sum(p.valor),f.primeiro_nome 
+FROM 
+	pagamento as p join funcionario as f on f.funcionario_id = p.funcionario_id 
+WHERE 
+	year(p.data_de_pagamento) = '2005' 
+	and month(p.data_de_pagamento) = '06' 
+GROUP BY 
+	f.funcionario_id;
+	
+5)
+SELECT 
+	f.titulo, 
+    COUNT(*) 
+FROM 
+	inventario i, 
+    aluguel a,
+    filme f
+WHERE 
+	i.inventario_id=a.inventario_id and
+    f.filme_id=i.filme_id and
+    year (data_de_aluguel) = '2005' and
+    month(data_de_aluguel) = '07' 
+GROUP BY 
+	f.titulo
+ORDER BY
+	count(*) DESC LIMIT 10
