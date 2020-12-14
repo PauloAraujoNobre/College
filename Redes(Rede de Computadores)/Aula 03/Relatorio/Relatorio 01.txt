@@ -1,0 +1,6 @@
+Nomes: Paulo Henrique Araujo Nobre
+       Matheus Holanda Matos
+       Moises Moura Rabelo
+
+Tarefa 1: Os Hubs recebem o pacote e envia para todas as portas exceto para a porta de quem recebeu o pacote.
+Tarefa 2: Os Switchs recebem o pacote e envia somente para o caminho para o qual o pacote deve seguir.
