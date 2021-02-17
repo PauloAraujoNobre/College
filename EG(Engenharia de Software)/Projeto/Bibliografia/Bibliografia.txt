@@ -1,0 +1,6 @@
+http://www.facom.ufu.br/~abdala/DAS5312/Diagrama%20de%20Estados.pdf
+https://pt.wikipedia.org/wiki/Diagrama_de_atividade
+https://homepages.dcc.ufmg.br/~figueiredo/disciplinas/aulas/uml-diagrama-atividades_v01.pdf
+https://www.corais.org/node/177 
+http://www.julio.scalfoni.com.br/arquivos/11-pinna-souza-arakaki.pdf
+https://www.devmedia.com.br/artigo-sql-magazine-68-utilizando-uml-diagramas-de-implantacao-comunicacao-e-tempoartigo-sql-magazine-68-utilizando-uml-diagramas-de-implantacao-comunicacao-e-tempo/16353

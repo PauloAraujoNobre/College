@@ -1,0 +1,20 @@
+Narrativa de caso de uso
+
+Caso de Reportar Postagem
+Requisitos: Postar uma foto
+Sujeito: Usuário
+
+condições: O usuário posta uma foto
+resultados: Outro usuario reprotar a postagem
+
+Fluxo Principal de eventos:
+1. O usuário posta uma foto em sua linha do tempo
+2. A postagem pode ser acessada pelos seus seguidores
+3. Outro usuario reporta a postagem
+4. A postagem é excluida devido a reportagem
+
+Fluxo Alternativo:
+1. O usuário posta uma foto em sua linha do tempo
+2. A postagem pode ser acessada pelos seus seguidores
+3. Outro usuario reporta a postagem
+4. A postagem não é excluida devido a falta de motivos
