@@ -4,8 +4,8 @@
 
   clf;
 
-  ponto_camera = [4; 2; 6];
-  
+  ponto_camera = [4; 2; -6];
+                
   centro_cubo = [ (max(vert_cubo(1,:)) + min(vert_cubo(1,:)))/2
                   (max(vert_cubo(2,:)) + min(vert_cubo(2,:)))/2
                   (max(vert_cubo(3,:)) + min(vert_cubo(3,:)))/2
@@ -21,8 +21,8 @@
                   (centro_cubo(3) + centro_piramide(3))/2
                 ];
                 
-  vetor_n = ponto_camera - ponto_medio;
-  
+  vetor_n = [ponto_camera, ponto_medio];
+
   aux = [-4; 6; 3];
   proj_aux_n = ((aux' * vetor_n)/dot(vetor_n, vetor_n)) * vetor_n; 
   vetor_u = aux - proj_aux_n;
@@ -35,10 +35,10 @@
 
   base_camera = [vetor_n'; vetor_u'; vetor_v'];
 
-  cubo_camera =  vert_cubo' * base_camera;
-  tronco_camera = vert_tronco' * base_camera;
-  paralelepipedo_camera = vert_paralelepipedo' * base_camera;
-  piramide_camera = vert_piramide' * base_camera;
+  cubo_camera =  vert_cubo' * inv(base_camera);
+  tronco_camera = vert_tronco' * inv(base_camera);
+  paralelepipedo_camera = vert_paralelepipedo' * inv(base_camera);
+  piramide_camera = vert_piramide' * inv(base_camera);
 
   patch('Faces', faces_cubo, 'Vertices', cubo_camera, 'FaceColor', 'b');
   patch('Faces', faces_tronco, 'Vertices', tronco_camera, 'FaceColor', 'g'); 
@@ -50,6 +50,6 @@
   zlabel ("z");
   grid();
   view (-30, 60);
-  print -djpg q3camera.jpg;
+  %print -djpg q3camera.jpg;
   hold off; 		
 end

@@ -10,16 +10,16 @@ function [cubo_projecao, faces_cubo, piramide_projecao, faces_piramide, paralele
   paralelepipedo_projecao = paralelepipedo_camera * matriz_projecao;
   piramide_projecao = piramide_camera * matriz_projecao;
 
-  patch('Faces', faces_cubo, 'Vertices', cubo_projecao, 'FaceColor', 'None', 'EdgeColor', 'r');
-  patch('Faces', faces_tronco, 'Vertices', tronco_projecao, 'FaceColor', 'None', 'EdgeColor', 'c');
-  patch('Faces', faces_paralelepipedo, 'Vertices', paralelepipedo_projecao, 'FaceColor', 'None', 'EdgeColor', 'b');
-  patch('Faces', faces_piramide, 'Vertices', piramide_projecao, 'FaceColor', 'None', 'EdgeColor', 'g');
+  patch('Faces', faces_cubo, 'Vertices', cubo_projecao, 'FaceColor', 'None', 'EdgeColor', 'b');
+  patch('Faces', faces_tronco, 'Vertices', tronco_projecao, 'FaceColor', 'None', 'EdgeColor', 'g');
+  patch('Faces', faces_paralelepipedo, 'Vertices', paralelepipedo_projecao, 'FaceColor', 'None', 'EdgeColor', 'r');
+  patch('Faces', faces_piramide, 'Vertices', piramide_projecao, 'FaceColor', 'None', 'EdgeColor', 'c');
 
   xlabel ("x");
   ylabel ("y");
   zlabel ("z");
   grid();
-  view (-30, -60);
-  print -djpg q4projecao.jpg;
+  view (-30, 60);
+  %print -djpg q4projecao.jpg;
   hold off;
 endfunction
