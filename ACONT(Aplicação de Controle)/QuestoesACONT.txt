@@ -1,0 +1,8 @@
+passa alta: vai selecionar sinais cujo a frenquencia sejam maiores que sua frequencia de corte
+passa baixavai selecionar sinais cujo a frenquencia sejam menores que sua frequencia de corte
+
+passivo: constituido de elementro passivos, ganhao de tensao no maximo igual a 1, nao tem finalidade e amplificação
+ativo: constituido de elementos ativos, ganho de tensoa maior que 1 e tem finalidade de amplificar
+
+analogico: componentes eletronicos para filtrar sinal
+digital: sinal analogico, converte em digital, filtra 
