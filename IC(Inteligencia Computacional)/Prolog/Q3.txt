@@ -1,0 +1,37 @@
+aluno(joao, paradigmas).
+aluno(maria, paradigmas).
+aluno(joel, lab2).
+aluno(joel, estruturas).
+frequenta(joao, ifce).
+frequenta(maria, ifce).
+frequenta(joel, ufc).
+professor(carlos, paradigmas).
+professor(ana_paula, estruturas).
+professor(pedro, lab2).
+funcionario(pedro, ufc).
+funcionario(ana_paula, ifce).
+funcionario(carlos, ifce).
+
+aluno_professor(X, Y):- aluno(Y, Z), professor(X, Z).
+
+universidade(X, Y):- frequenta(Y, X); funcionario(Y, X).
+
+colega_turma(X, Y):- aluno(X, Z), aluno(Y, Z).
+colega_universidade(X, Y):- frequenta(X, Z), frequenta(Y, Z).
+colegas(X, Y):- colega_turma(X, Y); colega_universidade(X, Y).
+
+colegas(X, Y):- funcionario(X, Z), funcionario(Y, Z).
+
+
+aluno_professor(carlos, Y).
+aluno_professor(ana_paula, Y).
+universidade(ifce, Y).
+universidade(ufc, Y).
+colegas(joao, joel).
+colegas(joao, maria).
+colegas(joao, carlos).
+colegas(ana_paula, carlos).
+colegas(pedro, carlos).
+
+
+https://swish.swi-prolog.org/p/rhRGAxtF.swinb

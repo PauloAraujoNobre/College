@@ -1,0 +1,13 @@
+nacionalidade(robert_lanza, americana).
+livro(robert_lanza, biocentrismo).
+ponto_central(biologia , estudo_da_realidade).
+imortal(consciencia ).
+
+
+nacionalidade(robert_lanza, X);
+livro(robert_lanza, X);
+ponto_central(X , estudo_da_realidade);
+imortal(consciencia).
+
+
+https://swish.swi-prolog.org/p/ZLWoCRjH.swinb

@@ -1,0 +1,11 @@
+traduzir(wall, muro).
+traduzir(book, livro).
+traduzir(table, mesa).
+
+
+traduzir(wall, X);
+traduzir(book, X);
+traduzir(X, mesa).
+
+
+https://swish.swi-prolog.org/p/DeHXbxDS.swinb

@@ -1,0 +1,11 @@
+beforeAfter(X, Y, I, L):-
+    I1 is I+1,
+	nth0(I1, L, X),
+    I2 is I-1,
+    nth0(I2, L, Y).
+
+
+beforeAfter(After, Before, 2, [1, 2, 3, 4, 5]).
+
+
+https://swish.swi-prolog.org/p/onxYORxU.swinb

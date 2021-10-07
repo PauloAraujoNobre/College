@@ -1,0 +1,26 @@
+conectado(a, b).
+conectado(b, c).
+conectado(c, d).
+conectado(d, e).
+conectado(e, f).
+conectado(g, h).
+conectado(h, i).
+
+caminho(A,Z,P) :- percorrer(A,Z,[],P).
+
+percorrer(Z,Z,L,[Z|L]).
+
+percorrer(A,Z,L,P) :-
+	(conectado(A,Y);
+	conectado(Y,A)),
+    \+ member(Y,L),
+    percorrer(Y,Z,[Y|L],P).
+
+%Ignorar as 2 primeiras entradas da solução. Ex: [a, a, b, c, d, e] => [b, c, d, e]
+
+
+caminho(a, f, P).
+caminho(i, d, P).
+
+
+https://swish.swi-prolog.org/p/onxYORxU.swinb
